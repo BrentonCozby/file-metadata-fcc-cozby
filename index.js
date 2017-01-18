@@ -1,5 +1,8 @@
-var express = require('express');
-var app = express();
+const express = require('express');
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+const app = express();
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -13,8 +16,10 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
+app.post('/api', upload.single('foo'), function (req, res) {
+    res.end(JSON.stringify({fileSize: req.file.size}, null, 3));
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
-
-

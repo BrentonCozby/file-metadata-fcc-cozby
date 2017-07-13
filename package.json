@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "returns the file size of an uploaded file",
   "engines": {
-    "node": "8.1.4"
+    "node": "6.11.1"
   },
   "main": "app.js",
   "scripts": {
